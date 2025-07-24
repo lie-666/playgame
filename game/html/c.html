@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件已停用</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../css/c/c.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#333333',
+                        secondary: '#888888',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .animate-pulse-slow {
+                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            .bg-noise {
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+                background-blend-mode: overlay;
+                background-size: 150px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 bg-noise flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:shadow-xl">
+        <div class="bg-red-500 text-white p-6 md:p-10">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-center text-shadow animate-pulse-slow">
+                此文件已停用
+            </h1>
+        </div>
+        <div class="p-6 md:p-10 text-center">
+            <div class="mb-8">
+                <i class="fa fa-exclamation-triangle text-6xl text-red-500 mb-4"></i>
+                <p class="text-xl text-gray-700 mb-2">该文件已停止运营</p>
+                <p class="text-gray-500">感谢您的关注与支持</p>
+            </div>
+            <div class="border-t border-gray-200 pt-6">
+                <p class="text-gray-600 mb-4">如需帮助，请访问我们的新文件</p>
+                <a href="c/index.html" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                    <i class="fa fa-external-link mr-2"></i>
+                    <span>新游戏</span>
+                </a>
+            </div>
+        </div>
+        <div class="bg-gray-50 p-4 text-center text-gray-500 text-sm">
+            <p>© 2025 已停用的文件</p>
+        </div>
+    </div>
+</body>
+</html>

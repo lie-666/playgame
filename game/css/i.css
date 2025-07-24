@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+}
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.canvas-container {
+    position: relative;
+}
+canvas {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #45a049;
+}
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.player-stat {
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+.player {
+    background-color: rgba(50, 205, 50, 0.2);
+    color: limegreen;
+}
+.ai {
+    background-color: rgba(220, 20, 60, 0.2);
+    color: crimson;
+}
+.neutral {
+    background-color: rgba(169, 169, 169, 0.2);
+    color: darkgray;
+}
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.game-over {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    height: 30px;
+}
+.victory {
+    color: green;
+}
+.defeat {
+    color: red;
+}
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.player-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.player-indicator.player {
+    background-color: limegreen;
+    border: 2px solid darkgreen;
+}
+.player-indicator.ai {
+    background-color: crimson;
+    border: 2px solid darkred;
+}

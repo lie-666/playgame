@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星际防御者</title>
+    <link rel="stylesheet" href="../css/c/one.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="score-display">分数: 0</div>
+        <div id="lives-display">生命: 3/3</div>
+        <div id="powerup-display"></div>
+        <canvas id="game-canvas"></canvas>
+        
+        <div id="start-screen">
+            <h1>星际防御者</h1>
+            <p>鼠标移动控制飞船，点击射击</p>
+            <p>躲避敌人，收集道具</p>
+            <button id="start-button">开始游戏</button>
+        </div>
+        
+        <div id="game-over-screen">
+            <h1>游戏结束</h1>
+            <div id="final-score">分数: 0</div>
+            <button id="restart-button">再玩一次</button>
+        </div>
+        
+    </div>
+
+    <!-- 将邀请码移到游戏容器外 -->
+    <div id="invite-code">
+        <input type="text" id="code-input" placeholder="输入邀请码">
+        <button id="submit-code">提交</button>
+    </div>
+    
+    <!-- 自定义鼠标指针 -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <script src="../js/c/one.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #0f0f1a;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+}
+
+#gameContainer {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: #1a1a2e;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(100, 65, 255, 0.3);
+    overflow: hidden;
+}
+
+#paddle {
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    background: linear-gradient(90deg, #6441ff, #ff66b3);
+    border-radius: 8px;
+    bottom: 20px;
+    left: 160px;
+    box-shadow: 0 0 15px rgba(100, 65, 255, 0.7);
+    transition: all 0.1s ease;
+}
+
+#ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #fff, #ff66b3);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 102, 179, 0.7);
+}
+
+.obstacle {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(90deg, #ff66b3, #6441ff);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 102, 179, 0.5);
+}
+
+#score {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(100, 65, 255, 0.7);
+}
+
+#startScreen, #gameOverScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(15, 15, 26, 0.9);
+    z-index: 10;
+}
+
+button {
+    background: linear-gradient(90deg, #6441ff, #ff66b3);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(100, 65, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 102, 179, 0.7);
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #6441ff, #ff66b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+p {
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+#gameOverScreen {
+    display: none;
+}
+
+#finalScore {
+    font-size: 28px;
+    margin: 20px 0;
+    color: #ff66b3;
+}

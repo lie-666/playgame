@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏模式选择</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/c/index.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>选择游戏模式</h1>
+        <div class="mode-options">
+            <div class="mode-option" id="one">
+                <div class="highlight"></div>
+                <div class="mode-title">单机模式</div>
+                <div class="mode-description">单人游戏，通过单人操作完成挑战</div>
+                <div class="remember-option">
+                    <input type="checkbox" id="remember-click">
+                    <label for="remember-click">总是选择这个</label>
+                </div>
+            </div>
+            
+            <div class="mode-option" id="two">
+                <div class="highlight"></div>
+                <div class="mode-title">双人模式</div>
+                <div class="mode-description">与朋友一起玩，享受对战乐趣</div>
+                <div class="remember-option">
+                    <input type="checkbox" id="remember-two-player">
+                    <label for="remember-two-player">总是选择这个</label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="start-btn" id="start-btn">开始游戏</button>
+    </div>
+
+    <script src="../js/c/index.js"></script>
+</body>
+</html>

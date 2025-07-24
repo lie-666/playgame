@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星辰变 - 墨阅</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5e35b1;
+            --primary-light: #7e57c2;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --eye-bg: #f0e6d2;
+            --font-size: 1.1rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        body.eye-protection {
+            background-color: var(--eye-bg);
+            color: #5a4a3a;
+        }
+        .core-value {
+            color: red;
+            font-size: 16px;  /* 字体16px */
+            position: absolute;
+            pointer-events: none;
+            opacity: 1;
+            transition: all 1s ease-out;  /* 1秒动画 */
+        }
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .reader-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-3px);
+        }
+        
+        .chapter-info {
+            text-align: center;
+        }
+        
+        .chapter-number {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .chapter-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+        
+        .reader-content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            font-size: var(--font-size);
+            position: relative;
+        }
+        
+        .content-inner {
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        .reader-footer {
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .control-panel {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 100;
+        }
+        
+        .control-panel.show {
+            bottom: 30px;
+        }
+        
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .control-item:hover {
+            color: var(--primary);
+        }
+        
+        .font-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .font-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .font-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-area {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 30%;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-area:hover {
+            opacity: 0.2;
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-area.left {
+            left: 0;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M20 6L10 16l10 10' stroke='%235e35b1' stroke-width='3' fill='none'/><circle cx='16' cy='16' r='15' stroke='%235e35b1' stroke-width='1' fill='none'/></svg>"), auto;
+        }
+        
+        .nav-area.right {
+            right: 0;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M12 6l10 10-10 10' stroke='%235e35b1' stroke-width='3' fill='none'/><circle cx='16' cy='16' r='15' stroke='%235e35b1' stroke-width='1' fill='none'/></svg>"), auto;
+        }
+        
+        .theme-menu {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 99;
+        }
+        
+        .theme-menu.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(-50%) scale(1);
+        }
+        
+        .theme-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .theme-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-default { background: #f8fafc; border: 2px solid #e2e8f0; }
+        .theme-eye { background: #f0e6d2; border: 2px solid #e0d5b8; }
+        .theme-dark { background: #1a202c; border: 2px solid #2d3748; }
+        .theme-sepia { background: #f4ecd8; border: 2px solid #e8dcc4; }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .reader-content {
+                padding: 1.5rem;
+            }
+            
+            .control-panel {
+                padding: 0.8rem 1rem;
+                gap: 1rem;
+            }
+            
+            .nav-area {
+                width: 20%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="reader-header">
+            <div class="header-left">
+                <button class="back-button" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="chapter-info">
+                    <div class="chapter-number" id="chapterNum">第1章</div>
+                    <div class="chapter-title" id="chapterTitle">初入修真</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-bookmark"></i>
+            </div>
+        </header>
+        
+        <main class="reader-content">
+            <div class="content-inner" id="novelContent">
+                正在加载章节内容...
+            </div>
+        </main>
+        
+        <footer class="reader-footer">
+            墨阅 · 沉浸式阅读体验
+        </footer>
+        
+        <div class="control-panel" id="controlPanel">
+            <div class="font-control">
+                <div class="font-btn" id="fontDecrease">A-</div>
+                <span id="fontSize">标准</span>
+                <div class="font-btn" id="fontIncrease">A+</div>
+            </div>
+            <div class="control-item" id="themeToggle">
+                <i class="fas fa-palette"></i> 主题
+            </div>
+            <div class="control-item" id="nightMode">
+                <i class="fas fa-moon"></i> 夜间
+            </div>
+            <div class="control-item" id="bookmarkBtn">
+                <i class="fas fa-bookmark"></i> 书签
+            </div>
+        </div>
+        
+        <div class="theme-menu" id="themeMenu">
+            <div class="theme-option theme-default" data-theme="default"></div>
+            <div class="theme-option theme-eye" data-theme="eye"></div>
+            <div class="theme-option theme-dark" data-theme="dark"></div>
+            <div class="theme-option theme-sepia" data-theme="sepia"></div>
+        </div>
+        
+        <div class="nav-area left" id="prevPage"></div>
+        <div class="nav-area right" id="nextPage"></div>
+    </div>
+    
+    <script src="xiaoshuo.js"></script>
+    <script>
+        let currentChapter = 0;
+        let fontSizeLevel = 2; // 0:小, 1:标准, 2:大, 3:超大
+        const fontSizeMap = ['0.9rem', '1.1rem', '1.3rem', '1.5rem'];
+        const fontSizeName = ['小', '标准', '大', '超大'];
+        let nightMode = false;
+        
+        // 加载章节
+        function loadChapter(chapterIndex) {
+            if (chapterIndex >= 0 && chapterIndex < novelData.length) {
+                currentChapter = chapterIndex;
+                
+                // 更新章节信息
+                document.getElementById('chapterNum').textContent = `第${novelData[chapterIndex].id}章`;
+                document.getElementById('chapterTitle').textContent = novelData[chapterIndex].title;
+                
+                // 内容加载动画
+                const contentEl = document.getElementById('novelContent');
+                contentEl.style.opacity = 0;
+                contentEl.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    contentEl.innerHTML = novelData[chapterIndex].main;
+                    contentEl.style.opacity = 1;
+                    contentEl.style.transform = 'translateY(0)';
+                    contentEl.style.transition = 'all 0.4s ease-out';
+                    
+                    // 移除过渡效果避免影响后续交互
+                    setTimeout(() => {
+                        contentEl.style.transition = 'none';
+                    }, 400);
+                }, 200);
+            }
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            loadChapter(0);
+            
+            // 控制面板显示/隐藏
+            const contentEl = document.querySelector('.reader-content');
+            const controlPanel = document.getElementById('controlPanel');
+            
+            contentEl.addEventListener('click', (e) => {
+                // 只在点击内容区域中间部分时切换控制面板
+                const rect = contentEl.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                
+                if (clickX > rect.width * 0.3 && clickX < rect.width * 0.7) {
+                    controlPanel.classList.toggle('show');
+                    document.getElementById('themeMenu').classList.remove('show');
+                }
+            });
+            
+            // 导航区域点击事件
+            document.getElementById('prevPage').addEventListener('click', () => {
+                if (currentChapter > 0) {
+                    loadChapter(currentChapter - 1);
+                    hideControls();
+                }
+            });
+            
+            document.getElementById('nextPage').addEventListener('click', () => {
+                if (currentChapter < novelData.length - 1) {
+                    loadChapter(currentChapter + 1);
+                    hideControls();
+                }
+            });
+            
+            // 字体控制
+            document.getElementById('fontIncrease').addEventListener('click', () => {
+                fontSizeLevel = Math.min(fontSizeLevel + 1, 3);
+                updateFontSize();
+            });
+            
+            document.getElementById('fontDecrease').addEventListener('click', () => {
+                fontSizeLevel = Math.max(fontSizeLevel - 1, 0);
+                updateFontSize();
+            });
+            
+            // 主题切换
+            document.getElementById('themeToggle').addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.getElementById('themeMenu').classList.toggle('show');
+            });
+            
+            // 主题选项
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.body.className = '';
+                    document.body.classList.add(`theme-${this.dataset.theme}`);
+                    hideControls();
+                });
+            });
+            
+            // 夜间模式
+            document.getElementById('nightMode').addEventListener('click', () => {
+                nightMode = !nightMode;
+                if (nightMode) {
+                    document.body.classList.add('theme-dark');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                }
+                hideControls();
+            });
+            
+            // 书签功能
+            document.getElementById('bookmarkBtn').addEventListener('click', () => {
+                alert(`已添加书签：第${novelData[currentChapter].id}章 ${novelData[currentChapter].title}`);
+                hideControls();
+            });
+            
+            // 键盘快捷键
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    if (currentChapter > 0) loadChapter(currentChapter - 1);
+                } else if (e.key === 'ArrowRight') {
+                    if (currentChapter < novelData.length - 1) loadChapter(currentChapter + 1);
+                }
+            });
+            
+            function updateFontSize() {
+                document.documentElement.style.setProperty('--font-size', fontSizeMap[fontSizeLevel]);
+                document.getElementById('fontSize').textContent = fontSizeName[fontSizeLevel];
+            }
+            
+            function hideControls() {
+                controlPanel.classList.remove('show');
+                document.getElementById('themeMenu').classList.remove('show');
+            }
+        });
+         const values = [
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+        ];
+        let currentIndex = 0;
+        
+        document.addEventListener('click', function(event) {
+            const valueElement = document.createElement('div');
+            valueElement.className = 'core-value';
+            valueElement.textContent = values[currentIndex];
+            
+            // 初始位置（鼠标点击点）
+            valueElement.style.left = (event.clientX + 10) + 'px';
+            valueElement.style.top = (event.clientY - 10) + 'px';
+            
+            document.body.appendChild(valueElement);
+            
+            // 触发动画（向上移动150px + 淡出）
+            setTimeout(() => {
+                valueElement.style.opacity = '0';
+                valueElement.style.transform = 'translateY(-150px)'; /* 上浮150px */
+            }, 10);
+            
+            // 1秒后移除元素（和动画时间一致）
+            setTimeout(() => {
+                valueElement.remove();
+            }, 1000);
+            
+            // 更新索引，循环显示
+            currentIndex = (currentIndex + 1) % values.length;
+        });
+    </script>
+</body>
+</html>

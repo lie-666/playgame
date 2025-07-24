@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0f0c29;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 100%;
+    cursor: none;
+}
+
+#start-screen, #game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+#game-over-screen {
+    display: none;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px cyan;
+    color: #fff;
+}
+
+button {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    border: none;
+    padding: 12px 30px;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.8);
+}
+
+.score-display {
+    position: absolute;
+    font-size: 1.2rem;
+    z-index: 5;
+}
+
+#score-display-1 {
+    top: 10px;
+    left: 10px;
+}
+
+#score-display-2 {
+    top: 10px;
+    right: 10px;
+}
+
+.lives-display {
+    position: absolute;
+    font-size: 1.2rem;
+    z-index: 5;
+    color: #ff5555;
+}
+
+#lives-display-1 {
+    top: 35px;
+    left: 10px;
+}
+
+#lives-display-2 {
+    top: 35px;
+    right: 10px;
+}
+
+.powerup-display {
+    position: absolute;
+    font-size: 0.9rem;
+    z-index: 5;
+    color: #55ff55;
+}
+
+#powerup-display-1 {
+    top: 60px;
+    left: 10px;
+}
+
+#powerup-display-2 {
+    top: 60px;
+    right: 10px;
+}
+
+#final-score {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: cyan;
+}
+
+.pulse {
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+#invite-code {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#invite-code input {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #00c6ff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 120px;
+}
+
+#invite-code button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-top: 0;
+}
+
+#controls-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    z-index: 5;
+    color: #aaaaaa;
+}
+
+.custom-cursor {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(0, 198, 255, 0.5);
+    border-radius: 50%;
+    border: 2px solid #00c6ff;
+    pointer-events: none;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    display: none;
+}

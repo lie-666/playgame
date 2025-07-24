@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨阅 - 优雅阅读空间</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5e35b1;
+            --primary-light: #7e57c2;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .core-value {
+            color: red;
+            font-size: 16px;  /* 字体16px */
+            position: absolute;
+            pointer-events: none;
+            opacity: 1;
+            transition: all 1s ease-out;  /* 1秒动画 */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .novel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .novel-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            cursor: pointer;
+        }
+        
+        .novel-card:nth-child(1) { animation: fadeInUp 0.5s 0.1s forwards; }
+        .novel-card:nth-child(2) { animation: fadeInUp 0.5s 0.2s forwards; }
+        .novel-card:nth-child(3) { animation: fadeInUp 0.5s 0.3s forwards; }
+        
+        .novel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-cover {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        .card-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-author {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .card-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .card-button:hover {
+            background: var(--primary-light);
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>墨阅</h1>
+            <p class="subtitle">沉浸式优雅阅读体验</p>
+        </header>
+        
+        <div class="novel-grid">
+            <div class="novel-card" onclick="window.location.href='xiaoshuo1/index.html'">
+                <div class="card-cover">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">末日求生</h3>
+                    <p class="card-desc">一个关于重生末日求生屯物资的小说。</p>
+                    <div class="card-footer">
+                        <span class="card-author">作者：DeepSeek</span>
+                        <button class="card-button">开始阅读</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="novel-card" onclick="window.location.href='xiaoshuo2/index.html'">
+                <div class="card-cover">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">程序员之路</h3>
+                    <p class="card-desc">烽火戏诸侯最新力作，讲述一个少年剑客的成长之路。</p>
+                    <div class="card-footer">
+                        <span class="card-author">作者：DeepSeek</span>
+                        <button class="card-button">开始阅读</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="novel-card" onclick="window.location.href='xiaoshuo2/index.html'">
+                <div class="card-cover">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">玄天修真录</h3>
+                    <p class="card-desc">灵体觉醒。</p>
+                    <div class="card-footer">
+                        <span class="card-author">作者：DeepSeek</span>
+                        <button class="card-button">开始阅读</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const values = [
+            "富强", "民主", "文明", "和谐",
+            "自由", "平等", "公正", "法治",
+            "爱国", "敬业", "诚信", "友善"
+        ];
+        let currentIndex = 0;
+        
+        document.addEventListener('click', function(event) {
+            const valueElement = document.createElement('div');
+            valueElement.className = 'core-value';
+            valueElement.textContent = values[currentIndex];
+            
+            // 初始位置（鼠标点击点）
+            valueElement.style.left = (event.clientX + 10) + 'px';
+            valueElement.style.top = (event.clientY - 10) + 'px';
+            
+            document.body.appendChild(valueElement);
+            
+            // 触发动画（向上移动150px + 淡出）
+            setTimeout(() => {
+                valueElement.style.opacity = '0';
+                valueElement.style.transform = 'translateY(-150px)'; /* 上浮150px */
+            }, 10);
+            
+            // 1秒后移除元素（和动画时间一致）
+            setTimeout(() => {
+                valueElement.remove();
+            }, 1000);
+            
+            // 更新索引，循环显示
+            currentIndex = (currentIndex + 1) % values.length;
+        });
+    </script>
+</body>
+</html>

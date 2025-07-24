@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星际防御者 - 双人模式</title>
+    <link rel="stylesheet" href="../css/c/two.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="score-display-1" class="score-display">玩家1: 0</div>
+        <div id="score-display-2" class="score-display">玩家2: 0</div>
+        <div id="lives-display-1" class="lives-display">生命: 3/3</div>
+        <div id="lives-display-2" class="lives-display">生命: 3/3</div>
+        <div id="powerup-display-1" class="powerup-display"></div>
+        <div id="powerup-display-2" class="powerup-display"></div>
+        <canvas id="game-canvas"></canvas>
+        
+        <div id="start-screen">
+            <h1>星际防御者 - 双人模式</h1>
+            <p>玩家1: WASD移动, 空格射击</p>
+            <p>玩家2: 方向键移动, 0键射击</p>
+            <button id="start-button">开始游戏</button>
+        </div>
+        
+        <div id="game-over-screen">
+            <h1>游戏结束</h1>
+            <div id="final-score">玩家1: 0 | 玩家2: 0</div>
+            <button id="restart-button">再玩一次</button>
+        </div>
+        
+    </div>
+
+    <div id="invite-code">
+        <input type="text" id="code-input" placeholder="输入邀请码">
+        <button id="submit-code">提交</button>
+    </div>
+    
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <script src="../js/c/two.js"></script>
+    </body>
+</html>

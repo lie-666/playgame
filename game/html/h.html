@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成语填空挑战</title>
+    <link href="css/h/else.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/h/h.css">
+</head>
+<body>
+    <div class="container">
+        <h1>成语填空挑战</h1>
+        <p class="subtitle">填补空缺，测试你的成语知识</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="game-area">
+            <div class="idiom-display" id="idiom-display"></div>
+            
+            <div class="input-group">
+                <input type="text" id="user-input" maxlength="1" placeholder="输入汉字" disabled>
+                <button class="btn-primary" id="submit-btn" disabled>提交</button>
+            </div>
+            
+            <div class="score-display">
+                得分: <span class="score-value" id="score-value">0</span>
+            </div>
+            
+            <button class="btn-primary btn-lg" id="start-btn">开始游戏</button>
+            
+            <div class="explanation" id="explanation">
+                <div class="explanation-title">成语解释</div>
+                <p id="explanation-text"></p>
+            </div>
+            
+            <div class="game-over" id="game-over">
+                游戏结束！你的最终得分是 <span id="final-score">0</span> 分
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/h/h.js"></script>
+</body>
+</html>

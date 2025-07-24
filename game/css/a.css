@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#ball {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #ff5e62, #d83c6a);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff5e62, inset 0 0 10px white;
+    transition: transform 0.1s;
+    z-index: 10;
+}
+
+.star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+        2% 35%, 39% 35%
+    );
+    transform: rotate(0deg);
+    animation: twinkle 1s infinite alternate;
+    z-index: 5;
+}
+
+@keyframes twinkle {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    100% { transform: scale(1.2) rotate(10deg); opacity: 1; box-shadow: 0 0 15px gold; }
+}
+
+#score-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#start-screen, #game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 20;
+}
+
+#game-over {
+    display: none;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ff5e62, #ff9966);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 94, 98, 0.3);
+}
+
+button {
+    background: linear-gradient(to right, #ff5e62, #ff9966);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 94, 98, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 94, 98, 0.6);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+#timer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#instructions {
+    margin-top: 30px;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}

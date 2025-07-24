@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素绘画争夺战 - 实时对战</title>
+    <link rel="stylesheet" href="../css/i.css">
+</head>
+<body>
+    <h1>像素绘画争夺战 - 实时对战</h1>
+    <div class="game-container">
+        <div class="timer" id="timer">15</div>
+        
+        <div class="stats">
+            <div class="player-stat player">玩家: <span id="playerScore">0</span> 像素</div>
+            <div class="player-stat neutral">中立: <span id="neutralScore">1024</span> 像素</div>
+            <div class="player-stat ai">AI: <span id="aiScore">0</span> 像素</div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="512" height="512"></canvas>
+        </div>
+        
+        <div class="game-over" id="gameOver"></div>
+        
+        <div class="controls">
+            <button id="restartButton">重新开始</button>
+        </div>
+    </div>
+
+    <script src="../js/i.js"></script>
+</body>
+</html>

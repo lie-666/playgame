@@ -1,0 +1,225 @@
+:root {
+    --bg-color: #faf8ef;
+    --text-color: #776e65;
+    --board-bg: #bbada0;
+    --cell-bg: #eee4da;
+    --tile-colors: {
+        2: #eee4da, 4: #ede0c8, 8: #f2b179, 16: #f59563,
+        32: #f67c5f, 64: #f65e3b, 128: #edcf72, 256: #edcc61,
+        512: #edc850, 1024: #edc53f, 2048: #edc22e, 4096: #3c3a32
+    };
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.header {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.score-container {
+    background: var(--board-bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+}
+
+.score-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.score-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.game-intro {
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.grid-container {
+    background: var(--board-bg);
+    border-radius: 8px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.grid-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.grid-row:last-child {
+    margin-bottom: 0;
+}
+
+.grid-cell {
+    width: 25%;
+    height: 0;
+    padding-bottom: 25%;
+    margin-right: 15px;
+    background: rgba(238, 228, 218, 0.35);
+    border-radius: 5px;
+    position: relative;
+}
+
+.grid-cell:last-child {
+    margin-right: 0;
+}
+
+.tile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 15px);
+    height: calc(100% - 15px);
+    margin: 7.5px;
+    border-radius: 5px;
+    background: var(--cell-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: all 0.1s ease-in-out;
+    z-index: 1;
+}
+
+@media (max-width: 520px) {
+    .tile {
+        font-size: 1.8rem;
+    }
+}
+
+.tile-2 { background-color: #eee4da; }
+.tile-4 { background-color: #ede0c8; }
+.tile-8 { background-color: #f2b179; color: white; }
+.tile-16 { background-color: #f59563; color: white; }
+.tile-32 { background-color: #f67c5f; color: white; }
+.tile-64 { background-color: #f65e3b; color: white; }
+.tile-128 { background-color: #edcf72; color: white; font-size: 2rem; }
+.tile-256 { background-color: #edcc61; color: white; font-size: 2rem; }
+.tile-512 { background-color: #edc850; color: white; font-size: 2rem; }
+.tile-1024 { background-color: #edc53f; color: white; font-size: 1.5rem; }
+.tile-2048 { background-color: #edc22e; color: white; font-size: 1.5rem; }
+.tile-super { background-color: #3c3a32; color: white; font-size: 1.5rem; }
+
+.tile-new {
+    animation: appear 0.2s;
+}
+
+.tile-merged {
+    animation: pop 0.2s;
+}
+
+@keyframes appear {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pop {
+    0% { transform: scale(0.9); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(238, 228, 218, 0.73);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.game-message.game-won, .game-message.game-over {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-message p {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: #9f8b77;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+}
+
+.keyboard-hint {
+    margin-top: 30px;
+    text-align: center;
+    color: #8f7a66;
+    font-size: 0.9rem;
+}
