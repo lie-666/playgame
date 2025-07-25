@@ -70,3 +70,17 @@
 > **注意**：重命名后需在 HTML 中更新所有链接引用路径，例如：
 > 原链接：`<a href="html/c/index.html">`  
 > 更新为：`<a href="games/star_defender.html">`
+
+# 游戏名称翻译
+
+- 2048_game.html —— 2048 游戏
+- bouncing_ball.html —— 弹跳球
+- idiom_challenge.html —— 成语挑战
+- maze_adventure.html —— 迷宫冒险
+- neon_dodgeball.html —— 霓虹躲避球
+- pixel_paint_battle.html —— 像素绘画对战
+- snake_game.html —— 贪吃蛇
+- tetris.html —— 俄罗斯方块
+- typing_practice.html —— 打字练习
+- star_defender/ —— 太空大战
+- xiaoshuo/ —— 小说
