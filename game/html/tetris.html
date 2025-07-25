@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>现代俄罗斯方块</title>
+    <link rel="stylesheet" href="../css/j.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <canvas id="game-board" width="300" height="600"></canvas>
+
+      <div class="side-panel">
+        <div class="panel">
+          <h2>下一个</h2>
+          <canvas id="next-piece" width="120" height="120"></canvas>
+        </div>
+
+        <div class="panel">
+          <h2>分数</h2>
+          <div id="score">0</div>
+        </div>
+
+        <div class="panel controls">
+          <h2>操作</h2>
+          <p>← → : 左右移动</p>
+          <p>↑ : 旋转</p>
+          <p>↓ : 加速下落</p>
+          <p>空格 : 直接落下</p>
+          <p>P : 暂停</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-over">
+      <h2>游戏结束!</h2>
+      <p>最终分数: <span id="final-score">0</span></p>
+      <button id="restart-btn">重新开始</button>
+    </div>
+
+    <script src="../js/j.js"></script>
+  </body>
+</html>
