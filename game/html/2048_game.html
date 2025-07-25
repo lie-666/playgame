@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>现代2048游戏</title>
+    <link rel="stylesheet" href="../css/e.css">
+</head>
+<body>
+    <div class="header">
+        <h1>2048</h1>
+        <div class="score-container">
+            <div class="score-title">分数</div>
+            <div class="score-value" id="score">0</div>
+        </div>
+    </div>
+
+    <p class="game-intro">
+        使用 <strong>方向键</strong> 或 <strong>WASD</strong> 移动方块。当两个相同数字的方块相撞时，它们会合并成一个！
+    </p>
+
+    <div class="game-container">
+        <div class="grid-container" id="grid">
+            <!-- 4x4 网格将通过JavaScript动态生成 -->
+        </div>
+        
+        <div class="game-message" id="game-message">
+            <p id="message-text">你赢了！</p>
+            <button class="btn" id="keep-playing">继续游戏</button>
+            <button class="btn" id="try-again">再试一次</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" id="new-game">新游戏</button>
+        <button class="btn" id="undo-move">撤销</button>
+    </div>
+
+    <p class="keyboard-hint">
+        提示：你也可以使用键盘方向键或WASD控制游戏
+    </p>
+
+    <script src="../js/e.js"></script>
+    </body>
+</html>

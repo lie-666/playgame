@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极速打字挑战</title>
+    <link rel="stylesheet" href="../css/d.css">
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+        <h1>极速打字挑战</h1>
+        
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="easy">简单</button>
+            <button class="difficulty-btn" data-difficulty="medium">中等</button>
+            <button class="difficulty-btn" data-difficulty="hard">困难</button>
+            <button class="difficulty-btn" data-difficulty="expert">专家</button>
+        </div>
+        
+        <div class="game-info">
+            <div class="info-item">
+                <div class="info-label">速度</div>
+                <div class="info-value" id="wpm">0</div>
+                <div class="info-label">字/分钟</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">准确率</div>
+                <div class="info-value" id="accuracy">0</div>
+                <div class="info-label">%</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">时间</div>
+                <div class="info-value" id="time">60</div>
+                <div class="info-label">秒</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">得分</div>
+                <div class="info-value" id="score">0</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        
+        <div class="typing-area">
+            <div class="target-text" id="targetText">点击"开始"按钮开始游戏！</div>
+            <input type="text" class="input-area" id="inputArea" disabled placeholder="开始输入...">
+            <div class="quote-info" id="quoteInfo"></div>
+        </div>
+        
+        <div class="controls">
+            <button class="start-btn" id="startBtn">开始</button>
+            <button class="reset-btn" id="resetBtn">重置</button>
+        </div>
+    </div>
+    
+    <div class="result-modal" id="resultModal">
+        <div class="result-content">
+            <h2 class="result-title">挑战完成！</h2>
+            <div class="result-stats">
+                <div class="result-stat">
+                    <div class="result-stat-value" id="finalWpm">0</div>
+                    <div class="result-stat-label">字/分钟</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value" id="finalAccuracy">0</div>
+                    <div class="result-stat-label">准确率</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value" id="finalScore">0</div>
+                    <div class="result-stat-label">得分</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value" id="finalChars">0</div>
+                    <div class="result-stat-label">总字符</div>
+                </div>
+            </div>
+            <button class="close-btn" id="closeBtn">关闭</button>
+        </div>
+    </div>
+    
+    <script src="../js/d.js"></script>
+</body>
+</html>
